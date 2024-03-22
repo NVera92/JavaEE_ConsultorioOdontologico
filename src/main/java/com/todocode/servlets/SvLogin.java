@@ -42,8 +42,9 @@ public class SvLogin extends HttpServlet {
             miSesion.setAttribute("nombreUsuario",nombreUsuario );
             response.sendRedirect("index.jsp");
         } else {
-            
+           
             response.sendRedirect("loginError.jsp");
+            
         }
 
     }
