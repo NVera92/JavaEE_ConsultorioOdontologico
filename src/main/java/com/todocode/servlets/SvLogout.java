@@ -34,7 +34,7 @@ public class SvLogout extends HttpServlet {
             throws ServletException, IOException {
         
         HttpSession sesionActual = request.getSession();
-        sesionActual.removeAttribute("nombreUsuario");
+        sesionActual.removeAttribute("usuarioLogueado");
         response.sendRedirect("login.jsp");
     }
 

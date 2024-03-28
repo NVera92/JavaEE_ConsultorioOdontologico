@@ -1,6 +1,7 @@
 package com.todocode.servlets;
 
 import com.todocode.logica.Controladora;
+import com.todocode.logica.Usuario;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,10 +37,11 @@ public class SvLogin extends HttpServlet {
         boolean validation = false;
         validation = controladora.comprobarIngreso(nombreUsuario, password);
         
-
+        Usuario usuarioLogueado = controladora.traerUsuarioNombre(nombreUsuario);
+        
         if (validation == true) {
             HttpSession miSesion = request.getSession(true);
-            miSesion.setAttribute("nombreUsuario",nombreUsuario );
+            miSesion.setAttribute("usuarioLogueado",usuarioLogueado );
             response.sendRedirect("index.jsp");
         } else {
            
