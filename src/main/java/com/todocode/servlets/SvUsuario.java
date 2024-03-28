@@ -42,7 +42,7 @@ public class SvUsuario extends HttpServlet {
             throws ServletException, IOException {
            
         String nombreUsuario = request.getParameter("inputUsuario");
-        String especialidad = request.getParameter("inputEspecialidad");
+        String especialidad = request.getParameter("inputRol");
         String password = request.getParameter("inputPassword");
         String password1 = request.getParameter("inputPassword1");
         

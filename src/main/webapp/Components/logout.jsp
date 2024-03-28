@@ -1,9 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<% HttpSession sesionActual = request.getSession();
-    
 
-%>
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
@@ -20,8 +17,7 @@
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                 <form action="SvLogout" method="post">
                     <button class="btn btn-primary" type="submit">Salir</button>
-                </form>
-                
+                </form> 
             </div>
         </div>
     </div>

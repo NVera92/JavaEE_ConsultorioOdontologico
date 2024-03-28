@@ -23,6 +23,8 @@
 </head>
 
 <body class="bg-gradient-primary">
+    
+    
 
     <div class="container">
 
@@ -50,7 +52,9 @@
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
                                                    id="inputPassword" name="inputPassword" placeholder="Contraseña">
+                                           
                                         </div>
+                                        
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Ingresar
                                         </button>

@@ -15,23 +15,27 @@
 
         <div class="form-group row">
             <div class="col-sm-6 mb-3 mb-sm-0">
-                <input type="text" class="form-control form-control-user" id="inputUsuario"
+                <input type="text" class="form-control" id="inputUsuario"
                        placeholder="Usuario" name="inputUsuario">
             </div>
             <div class="col-sm-6">
-                <input type="text" class="form-control form-control-user" id="inputEspecialidad"
-                       placeholder="Especialidad" name="inputEspecialidad">
+                <select class="form-control" name="inputRol" id="inputRol" required>
+                    <option value="" disabled selected>Selecione un Rol</option>
+                    <option value="odontologo">Odontólogo</option>
+                    <option value="secretario">Secretario</option>
+                    <option value="administrador">Administrador</option>
+                </select>
             </div>
 
         </div>
 
         <div class="form-group row">
             <div class="col-sm-6 mb-3 mb-sm-0">
-                <input type="password" class="form-control form-control-user" id="inputPassword"
+                <input type="password" class="form-control" id="inputPassword"
                        placeholder="Contraseña" name="inputPassword">
             </div>
             <div class="col-sm-6">
-                <input type="password" class="form-control form-control-user" id="inputPassword1"
+                <input type="password" class="form-control" id="inputPassword1"
                        placeholder="Repetir Contraseña" name="inputPassword1">
             </div>
 
