@@ -26,8 +26,6 @@ public class ControladoraPersistencia {
     
 
     public void crearUsuario(Usuario usuario) {
-        String encrytpPassword = AES256.encrypt(usuario.getPassword_usuario(), usuario.getRol(), usuario.getNombre_usuario());
-        usuario.setPassword_usuario(encrytpPassword);
         usuarioJpaController.create(usuario);
     }
 

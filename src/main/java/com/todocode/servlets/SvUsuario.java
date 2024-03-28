@@ -25,39 +25,56 @@ public class SvUsuario extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         List<Usuario> listaUsuaraios = new ArrayList<Usuario>();
-        
-        listaUsuaraios = controladora.traerUsuarios();  
-        
+
+        listaUsuaraios = controladora.traerUsuarios();
+
         HttpSession miSesion = request.getSession();
         miSesion.setAttribute("listaUsuarios", listaUsuaraios);
-        
+
         response.sendRedirect("verUsuarios.jsp");
-    
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-           
+
         String nombreUsuario = request.getParameter("inputUsuario");
-        String especialidad = request.getParameter("inputRol");
+        String rol = request.getParameter("inputRol");
         String password = request.getParameter("inputPassword");
         String password1 = request.getParameter("inputPassword1");
         
-        Usuario usuario = new Usuario();
+        String error = "";
         
-        usuario.setNombre_usuario(nombreUsuario);
-        usuario.setRol(especialidad);
-        
-        if(password.equals(password1)){
-            usuario.setPassword_usuario(password);
-            controladora.crearUsuario(usuario);
-        }else{
-            System.out.println("Error en validacion de password");
+        HttpSession miSession = request.getSession();
+
+        if (nombreUsuario == null || rol == null || password == null || password1 == null) {
+            response.sendRedirect("errorCamposLogin.jsp");
+        } else {
+            if (! controladora.existeUsuario(nombreUsuario)) {
+                Usuario usuario = new Usuario();
+
+                usuario.setNombre_usuario(nombreUsuario);
+                usuario.setRol(rol);
+
+                if (password.equals(password1)) {
+                    usuario.setPassword_usuario(password);
+                    controladora.crearUsuario(usuario);
+                    doGet(request, response);
+                } else {
+                    error = "Verifique cuidadosamente los datos ingresados y reintente.";
+                    miSession.setAttribute("error", error);
+                    response.sendRedirect("errorCamposLogin.jsp");
+                }
+            }else{
+                error = "El nombre de usuario que esta intentando crear, no esta disponible, por favor elija otro.";
+                miSession.setAttribute("error", error);
+                response.sendRedirect("errorCamposLogin.jsp");
+            }
         }
-        response.sendRedirect("index.jsp");
+
     }
 
     @Override

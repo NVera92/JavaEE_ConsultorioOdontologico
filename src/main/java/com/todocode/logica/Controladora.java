@@ -13,6 +13,8 @@ public class Controladora {
     }
 
     public void crearUsuario(Usuario usuario) {
+        String encrytpPassword = AES256.encrypt(usuario.getPassword_usuario(), usuario.getRol(), usuario.getNombre_usuario());
+        usuario.setPassword_usuario(encrytpPassword);
         controladoraPersistencia.crearUsuario(usuario);
     }
 
@@ -64,6 +66,22 @@ public class Controladora {
             System.out.println(e.getMessage());
         }
         return usuario;
+    }
+
+    public boolean existeUsuario(String nombreUsuario) {
+        boolean flag = false;
+        try {
+            List<Usuario> listaUsuarios = controladoraPersistencia.traerUsuarios();
+            for(Usuario u : listaUsuarios){
+                if(u.getNombre_usuario().equalsIgnoreCase(nombreUsuario)){
+                    flag = true;
+                }
+            }
+        } catch (Error e) {
+            System.out.println(e.getMessage());
+        }
+
+        return flag;
     }
 
 }
