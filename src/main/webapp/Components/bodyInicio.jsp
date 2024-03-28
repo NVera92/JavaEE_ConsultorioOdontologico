@@ -3,7 +3,7 @@
 
     <!-- Validacion Sesion -->
     <%  HttpSession miSesion = request.getSession();
-        String usuario = (String) request.getSession().getAttribute("nombreUsuario");
+        Usuario usuario = (Usuario) miSesion.getAttribute("usuarioLogueado");
         
         if(usuario == null){
             response.sendRedirect("login.jsp");

@@ -20,8 +20,7 @@
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
                 <form action="SvLogout" method="post">
                     <button class="btn btn-primary" type="submit">Salir</button>
-                </form>
-                
+                </form> 
             </div>
         </div>
     </div>
