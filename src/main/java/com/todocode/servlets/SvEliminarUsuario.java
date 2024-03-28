@@ -35,7 +35,9 @@ public class SvEliminarUsuario extends HttpServlet {
         
         controladora.eliminarUsuario(id);
         
-        response.sendRedirect("verUsuarios.jsp");
+        
+        response.sendRedirect("SvUsuario");
+        
         
     }
 
