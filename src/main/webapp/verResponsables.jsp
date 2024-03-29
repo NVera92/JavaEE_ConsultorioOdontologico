@@ -13,7 +13,7 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Ver Responsables</h1>
-        <p class="mb-4">A continuacion se muestra la lista completas de responsables.
+        <p class="mb-4">A continuacion se muestra la lista completa de responsables.
         </p>
 
         <!-- DataTales Example -->
@@ -63,7 +63,7 @@
                                         </button>
                                         <input type="hidden" name="id" value="<%=res.getId()%>"> <!-- Esto es para mandar el id al servelt -->
                                     </form>
-                                    <form name="eliminar" action="SvEliminarUsuario" method="post"> <!-- Esto es para mandar el codigo al servlet -->
+                                    <form name="eliminar" action="SvEliminarResponsable" method="post"> <!-- Esto es para mandar el codigo al servlet -->
                                         <button type="submit" class="btn btn-primary btn-user btn-block" style="background-color:red; margin-right: 5px">
                                             <i class="fas fa-trash-alt"></i> Eliminar
                                         </button>

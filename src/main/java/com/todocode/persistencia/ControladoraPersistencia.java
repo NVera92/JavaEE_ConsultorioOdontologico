@@ -74,6 +74,14 @@ public class ControladoraPersistencia {
         }
     }
 
+    public void eliminarResponsable(int id) {
+        try {
+            responsableJpaController.destroy(id);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     
 
     

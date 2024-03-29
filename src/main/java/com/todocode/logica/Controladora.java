@@ -102,4 +102,8 @@ public class Controladora {
         controladoraPersistencia.editarResponsable(res);
     }
 
+    public void eliminarResponsable(int id) {
+        controladoraPersistencia.eliminarResponsable(id);
+    }
+
 }
