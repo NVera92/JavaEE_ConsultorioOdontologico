@@ -1,9 +1,7 @@
 package com.todocode.logica;
-
 import com.todocode.persistencia.ControladoraPersistencia;
 import java.util.ArrayList;
 import java.util.List;
-import jdk.javadoc.internal.doclets.toolkit.util.Utils;
 
 public class Controladora {
 
@@ -82,6 +80,10 @@ public class Controladora {
         }
 
         return flag;
+    }
+
+    public void crearResponsable(Responsable res) {
+        controladoraPersistencia.crearResponsable(res);
     }
 
 }

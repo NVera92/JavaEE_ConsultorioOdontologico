@@ -1,6 +1,7 @@
 package com.todocode.persistencia;
 
 import com.todocode.logica.AES256;
+import com.todocode.logica.Responsable;
 import com.todocode.logica.Usuario;
 import com.todocode.persistencia.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
@@ -51,6 +52,10 @@ public class ControladoraPersistencia {
         } catch (Exception ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public void crearResponsable(Responsable res) {
+        responsableJpaController.create(res);
     }
 
     
