@@ -1,9 +1,7 @@
 package com.todocode.logica;
-
 import com.todocode.persistencia.ControladoraPersistencia;
 import java.util.ArrayList;
 import java.util.List;
-import jdk.javadoc.internal.doclets.toolkit.util.Utils;
 
 public class Controladora {
 
@@ -31,6 +29,8 @@ public class Controladora {
     }
 
     public void editarUsuario(Usuario usuario) {
+        String encrytpPassword = AES256.encrypt(usuario.getPassword_usuario(), usuario.getRol(), usuario.getNombre_usuario());
+        usuario.setPassword_usuario(encrytpPassword);
         controladoraPersistencia.editarUsuario(usuario);
     }
 
@@ -72,8 +72,8 @@ public class Controladora {
         boolean flag = false;
         try {
             List<Usuario> listaUsuarios = controladoraPersistencia.traerUsuarios();
-            for(Usuario u : listaUsuarios){
-                if(u.getNombre_usuario().equalsIgnoreCase(nombreUsuario)){
+            for (Usuario u : listaUsuarios) {
+                if (u.getNombre_usuario().equalsIgnoreCase(nombreUsuario)) {
                     flag = true;
                 }
             }
@@ -82,6 +82,28 @@ public class Controladora {
         }
 
         return flag;
+    }
+
+    public void crearResponsable(Responsable res) {
+        controladoraPersistencia.crearResponsable(res);
+    }
+
+    public List<Responsable> traerResponsables() {
+        List<Responsable> listaResponsables = controladoraPersistencia.traerResponsables();
+        return listaResponsables;
+    }
+
+    public Responsable traerResponsable(int id) {
+        Responsable res = controladoraPersistencia.traerResponsable(id);
+        return res;
+    }
+
+    public void editarResponsable(Responsable res) {
+        controladoraPersistencia.editarResponsable(res);
+    }
+
+    public void eliminarResponsable(int id) {
+        controladoraPersistencia.eliminarResponsable(id);
     }
 
 }
