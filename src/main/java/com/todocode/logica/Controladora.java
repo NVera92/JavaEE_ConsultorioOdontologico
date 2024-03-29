@@ -88,4 +88,14 @@ public class Controladora {
         controladoraPersistencia.crearResponsable(res);
     }
 
+    public List<Responsable> traerResponsables() {
+        List<Responsable> listaResponsables = controladoraPersistencia.traerResponsables();
+        return listaResponsables;
+    }
+
+    public Responsable traerResponsable(int id) {
+        Responsable res = controladoraPersistencia.traerResponsable(id);
+        return res;
+    }
+
 }

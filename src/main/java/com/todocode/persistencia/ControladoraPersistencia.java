@@ -58,6 +58,16 @@ public class ControladoraPersistencia {
         responsableJpaController.create(res);
     }
 
+    public List<Responsable> traerResponsables() {
+        List<Responsable> listaResponsables = responsableJpaController.findResponsableEntities();
+        return listaResponsables;
+    }
+
+    public Responsable traerResponsable(int id) {
+        Responsable res = responsableJpaController.findResponsable(id);
+        return res;
+    }
+
     
 
     

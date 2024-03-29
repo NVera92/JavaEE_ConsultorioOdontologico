@@ -48,7 +48,7 @@
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Responsables</h6>
-                <a class="collapse-item" href="">Ver Responsables</a>
+                <a class="collapse-item" href="SvResponsable">Ver Responsables</a>
                 <a class="collapse-item" href="altaResponsable.jsp">Alta Responsables</a>
             </div>
         </div>
@@ -71,8 +71,8 @@
     </li>
 
     <!-- Nav Item - Odontologo Collapse Menu -->
-    <% if(usuarioLog != null){
-if (usuarioLog.getRol().equalsIgnoreCase("administrador") || usuarioLog.getRol().equalsIgnoreCase("odontologo")) {%>
+    <% if (usuarioLog != null) {
+            if (usuarioLog.getRol().equalsIgnoreCase("administrador") || usuarioLog.getRol().equalsIgnoreCase("odontologo")) {%>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
            aria-expanded="true" aria-controls="collapseTwo">
@@ -87,10 +87,11 @@ if (usuarioLog.getRol().equalsIgnoreCase("administrador") || usuarioLog.getRol()
             </div>
         </div>
     </li>
-    <% }} %>
+    <% }
+        } %>
     <!-- Nav Item - Secretario Collapse Menu -->
-    <%  if (usuarioLog != null){
-        if (usuarioLog.getRol().equalsIgnoreCase("administrador") || usuarioLog.getRol().equalsIgnoreCase("secretario")) {%>
+    <%  if (usuarioLog != null) {
+            if (usuarioLog.getRol().equalsIgnoreCase("administrador") || usuarioLog.getRol().equalsIgnoreCase("secretario")) {%>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
            aria-expanded="true" aria-controls="collapseUtilities">
@@ -106,11 +107,12 @@ if (usuarioLog.getRol().equalsIgnoreCase("administrador") || usuarioLog.getRol()
             </div>
         </div>
     </li>
-    <% }}%>
+    <% }
+        }%>
 
     <!-- Nav Item - Secretario Collapse Menu -->
-    <% if(usuarioLog != null){
-if (usuarioLog.getRol().equalsIgnoreCase("administrador")) {%>
+    <% if (usuarioLog != null) {
+            if (usuarioLog.getRol().equalsIgnoreCase("administrador")) {%>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive"
            aria-expanded="true" aria-controls="collapseThree">
@@ -126,7 +128,8 @@ if (usuarioLog.getRol().equalsIgnoreCase("administrador")) {%>
             </div>
         </div>
     </li>
-    <% }}%>
+    <% }
+        }%>
 
     <!-- Divider -->
     <hr class="sidebar-divider">

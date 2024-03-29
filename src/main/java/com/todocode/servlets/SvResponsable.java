@@ -3,11 +3,10 @@ package com.todocode.servlets;
 import com.todocode.logica.Controladora;
 import com.todocode.logica.Responsable;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -15,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "SvResponsable", urlPatterns = {"/SvResponsable"})
 public class SvResponsable extends HttpServlet {
@@ -30,6 +30,12 @@ public class SvResponsable extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        List<Responsable> listaResponsables = controladora.traerResponsables();
+        HttpSession miSesion = request.getSession();
+        miSesion.setAttribute("listaResponsables", listaResponsables);
+        
+        response.sendRedirect("verResponsables.jsp");
 
     }
 
@@ -70,6 +76,9 @@ public class SvResponsable extends HttpServlet {
         
 
         controladora.crearResponsable(res);
+        
+        //Redireccion al View
+        doGet(request, response);
     }
 
     @Override
