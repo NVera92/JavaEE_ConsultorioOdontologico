@@ -3,8 +3,12 @@
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-    <% Usuario usarioLog = (Usuario)request.getSession().getAttribute("usuarioLogueado");%>
-    
+    <%
+        Usuario usuarioLog = (Usuario) request.getSession().getAttribute("usuarioLogueado");
+
+
+    %>
+
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
         <div class="sidebar-brand-icon rotate-n-15">
@@ -49,7 +53,7 @@
             </div>
         </div>
     </li>
-    
+
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
            aria-expanded="true" aria-controls="collapseUtilities">
@@ -65,9 +69,10 @@
             </div>
         </div>
     </li>
-    
+
     <!-- Nav Item - Odontologo Collapse Menu -->
-    <% if(usarioLog.getRol().equalsIgnoreCase("administrador") || usarioLog.getRol().equalsIgnoreCase("odontologo")){%>
+    <% if(usuarioLog != null){
+if (usuarioLog.getRol().equalsIgnoreCase("administrador") || usuarioLog.getRol().equalsIgnoreCase("odontologo")) {%>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
            aria-expanded="true" aria-controls="collapseTwo">
@@ -82,9 +87,10 @@
             </div>
         </div>
     </li>
-    <% } %>
+    <% }} %>
     <!-- Nav Item - Secretario Collapse Menu -->
-    <% if(usarioLog.getRol().equalsIgnoreCase("administrador") || usarioLog.getRol().equalsIgnoreCase("secretario")){%>
+    <%  if (usuarioLog != null){
+        if (usuarioLog.getRol().equalsIgnoreCase("administrador") || usuarioLog.getRol().equalsIgnoreCase("secretario")) {%>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
            aria-expanded="true" aria-controls="collapseUtilities">
@@ -100,10 +106,11 @@
             </div>
         </div>
     </li>
-    <% }%>
+    <% }}%>
 
     <!-- Nav Item - Secretario Collapse Menu -->
-    <% if(usarioLog.getRol().equalsIgnoreCase("administrador")){%>
+    <% if(usuarioLog != null){
+if (usuarioLog.getRol().equalsIgnoreCase("administrador")) {%>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive"
            aria-expanded="true" aria-controls="collapseThree">
@@ -119,8 +126,8 @@
             </div>
         </div>
     </li>
-    <% } %>
-    
+    <% }}%>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 

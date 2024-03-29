@@ -29,6 +29,8 @@ public class Controladora {
     }
 
     public void editarUsuario(Usuario usuario) {
+        String encrytpPassword = AES256.encrypt(usuario.getPassword_usuario(), usuario.getRol(), usuario.getNombre_usuario());
+        usuario.setPassword_usuario(encrytpPassword);
         controladoraPersistencia.editarUsuario(usuario);
     }
 
@@ -70,8 +72,8 @@ public class Controladora {
         boolean flag = false;
         try {
             List<Usuario> listaUsuarios = controladoraPersistencia.traerUsuarios();
-            for(Usuario u : listaUsuarios){
-                if(u.getNombre_usuario().equalsIgnoreCase(nombreUsuario)){
+            for (Usuario u : listaUsuarios) {
+                if (u.getNombre_usuario().equalsIgnoreCase(nombreUsuario)) {
                     flag = true;
                 }
             }
