@@ -98,4 +98,8 @@ public class Controladora {
         return res;
     }
 
+    public void editarResponsable(Responsable res) {
+        controladoraPersistencia.editarResponsable(res);
+    }
+
 }
