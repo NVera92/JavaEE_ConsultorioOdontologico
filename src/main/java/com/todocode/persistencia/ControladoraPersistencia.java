@@ -1,8 +1,10 @@
 package com.todocode.persistencia;
 
+import com.todocode.logica.Paciente;
 import com.todocode.logica.Responsable;
 import com.todocode.logica.Usuario;
 import com.todocode.persistencia.exceptions.NonexistentEntityException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -80,6 +82,17 @@ public class ControladoraPersistencia {
         } catch (NonexistentEntityException ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public void crearPaciente(Paciente paciente) {
+        pacienteJpaController.create(paciente);
+    }
+
+    public List<Paciente> traerPacientes() {
+        List<Paciente> listaPacientes = new ArrayList<>();
+        listaPacientes = pacienteJpaController.findPacienteEntities();
+        
+        return listaPacientes;
     }
 
     

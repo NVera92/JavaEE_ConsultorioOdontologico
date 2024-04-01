@@ -106,4 +106,12 @@ public class Controladora {
         controladoraPersistencia.eliminarResponsable(id);
     }
 
+    public void crearPaciente(Paciente paciente) {
+        controladoraPersistencia.crearPaciente(paciente);
+    }
+
+    public List<Paciente> traerPacientes() {
+        return controladoraPersistencia.traerPacientes();
+    }
+
 }
