@@ -114,4 +114,8 @@ public class Controladora {
         return controladoraPersistencia.traerPacientes();
     }
 
+    public void eliminarPaciente(int id) {
+        controladoraPersistencia.eliminarPaciente(id);
+    }
+
 }

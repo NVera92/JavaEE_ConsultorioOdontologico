@@ -8,7 +8,10 @@ import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -22,8 +25,7 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "SvPaciente", urlPatterns = {"/SvPaciente"})
 public class SvPaciente extends HttpServlet {
-    
-    
+
     Controladora controladora = new Controladora();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -36,20 +38,17 @@ public class SvPaciente extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        try{
-        // Se captura la sesion y se enia el listado de responsables
+        try {
+            // Se captura la sesion y se enia el listado de responsables
             List<Responsable> listaResponsables = new ArrayList<>();
             listaResponsables = controladora.traerResponsables();
-            System.out.println(listaResponsables.isEmpty());
-            
+
             HttpSession miSesion = request.getSession();
             miSesion.setAttribute("listaResponsables", listaResponsables);
-            
-            System.out.println("ACA");
-            
+
             response.sendRedirect("altaPaciente.jsp");
-            
-        }catch(Error e){
+
+        } catch (Error e) {
             System.out.println(e.getMessage());
         }
     }
@@ -58,7 +57,7 @@ public class SvPaciente extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-              
+
             String nombre = request.getParameter("inputNombre");
             String apellido = request.getParameter("inputApellido");
             String dni = request.getParameter("inputDni");
@@ -77,7 +76,7 @@ public class SvPaciente extends HttpServlet {
             paciente.setTelefono(telefono);
             paciente.setDireccion(direccion);
             paciente.setTipo_sangre(grupoSanguineo);
-            
+
             // Paseo de string a boolean y comprobacion del estado
             if (poseeOs != null) {
                 if (poseeOs.equals("on")) {
@@ -96,22 +95,8 @@ public class SvPaciente extends HttpServlet {
                 Logger.getLogger(SvResponsable.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            System.out.println(nombre);
-            System.out.println(apellido);
-            System.out.println(dni);
-            System.out.println(fechaStr);
-            System.out.println(telefono);
-            System.out.println(direccion);
-            System.out.println(grupoSanguineo);
-            System.out.println("ID: "+idResponsable);
-            
-            // Verifica que la fecha de nacimiento no sea posterior al ahora
-            if(paciente.getFecha_nacimiento().before(Date.from(Instant.now()))){
-                controladora.crearPaciente(paciente);
-                response.sendRedirect("SvVerPaciente");
-            }else{
-                response.sendRedirect("index.jsp");
-            }
+            controladora.crearPaciente(paciente);
+            response.sendRedirect("SvVerPaciente");
 
         } catch (Error e) {
             System.out.println(e.getMessage());
