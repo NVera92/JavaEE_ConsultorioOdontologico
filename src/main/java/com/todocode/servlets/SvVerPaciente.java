@@ -4,7 +4,6 @@ package com.todocode.servlets;
 import com.todocode.logica.Controladora;
 import com.todocode.logica.Paciente;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;

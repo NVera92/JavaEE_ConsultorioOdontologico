@@ -32,37 +32,37 @@
         <div class="form-group row">
             <div class="col-sm-6 mb-3 mb-sm-0">
                 <input type="text" class="form-control" id="inputNombre"
-                       value="<%= r.getNombre() %>" name="inputNombre" required>
+                       value="<%= r.getNombre() %>" name="inputNombre" placeholder="Nombre" required>
             </div>
             <div class="col-sm-6">
                 <input type="text" class="form-control" id="inputApellido"
-                       value="<%= r.getApellido() %>" name="inputApellido" required>
+                       value="<%= r.getApellido() %>" name="inputApellido"  placeholder="Apellido" required>
             </div>
         </div>
         <div class="form-group row">
             <div class="col-sm-6 mb-3 mb-sm-0">
                 <input type="text" class="form-control" id="inputDni"
-                       value="<%= r.getDni()%>" name="inputDni" required>
+                       value="<%= r.getDni()%>" name="inputDni" placeholder="Dni" required>
             </div>
             <div class="col-sm-6 mb-3 mb-sm-0">
                 <input type="date" class="form-control" id="inputFecha"
-                       value="<%= stringDate %>" name="inputFecha" required>
+                       value="<%= stringDate %>" name="inputFecha" placeholder="Fecha" required>
             </div>
         </div>
 
         <div class="form-group row">
             <div class="col-sm-6 mb-3 mb-sm-0">
                 <input type="text" class="form-control" id="inputTelefono"
-                       value="<%= r.getTelefono() %>" name="inputTelefono" required>
+                       value="<%= r.getTelefono() %>" name="inputTelefono" placeholder="Teléfono" required>
             </div>
             <div class="col-sm-6">
                 <input type="text" class="form-control" id="inputDireccion"
-                       value="<%= r.getDireccion() %>" name="inputDireccion" required>
+                       value="<%= r.getDireccion() %>" name="inputDireccion" placeholeder="Dirección" required>
             </div>
         </div>
         <div class="form-group">
             <input type="text" class="form-control" id="inputResponsabilidad"
-                   value="<%= r.getTipo_responsabilidad() %>" name="inputResponsabilidad">
+                   value="<%= r.getTipo_responsabilidad() %>" placeholder="Responsabilidad" name="inputResponsabilidad">
         </div>
         </br>
         <hr>

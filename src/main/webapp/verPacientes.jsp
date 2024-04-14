@@ -58,7 +58,7 @@
                                 <td><%= res.getDireccion()%></td>
 
                                 <td style="display: flex; width: 230px">
-                                    <form name="eliminar" action="SvEditarResponsable" method="get"> <!-- Esto es para mandar el codigo al servlet -->
+                                    <form name="eliminar" action="SvEditarPaciente" method="get"> <!-- Esto es para mandar el codigo al servlet -->
                                         <button type="submit" class="btn btn-primary btn-user btn-block" style="margin-right: 5px">
                                             <i class="fas fa-pencil-alt"></i> Editar
                                         </button>

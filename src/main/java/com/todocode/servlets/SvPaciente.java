@@ -4,14 +4,9 @@ import com.todocode.logica.Controladora;
 import com.todocode.logica.Paciente;
 import com.todocode.logica.Responsable;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -76,6 +71,9 @@ public class SvPaciente extends HttpServlet {
             paciente.setTelefono(telefono);
             paciente.setDireccion(direccion);
             paciente.setTipo_sangre(grupoSanguineo);
+            
+            Responsable responsable = controladora.traerResponsable(idResponsable);
+            paciente.setResponsable(responsable);
 
             // Paseo de string a boolean y comprobacion del estado
             if (poseeOs != null) {

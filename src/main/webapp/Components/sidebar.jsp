@@ -64,8 +64,8 @@
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Acciones</h6>
-                <a class="collapse-item" href="">Ver Pacientes</a>
-                <a class="collapse-item" href="">Alta Pacientes</a>
+                <a class="collapse-item" href="">Ver Turnos</a>
+                <a class="collapse-item" href="">Alta Turnos</a>
             </div>
         </div>
     </li>
@@ -77,7 +77,7 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
            aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-solid fa-hospital-user"></i>
-            <span>Odontólogos</span>
+            <span>Odontólogo</span>
         </a>
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -89,6 +89,7 @@
     </li>
     <% }
         } %>
+          
     <!-- Nav Item - Secretario Collapse Menu -->
     <%  if (usuarioLog != null) {
             if (usuarioLog.getRol().equalsIgnoreCase("administrador") || usuarioLog.getRol().equalsIgnoreCase("secretario")) {%>
@@ -102,14 +103,13 @@
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Acciones</h6>
-                <a class="collapse-item" href="">Ver Pacientes</a>
-                <a class="collapse-item" href="">Alta Pacientes</a>
+                <a class="collapse-item" href="">Ver Secretarios</a>
+                <a class="collapse-item" href="altaSecretario.jsp">Alta Secretarios</a>
             </div>
         </div>
     </li>
     <% }
         }%>
-
     <!-- Nav Item - Secretario Collapse Menu -->
     <% if (usuarioLog != null) {
             if (usuarioLog.getRol().equalsIgnoreCase("administrador")) {%>

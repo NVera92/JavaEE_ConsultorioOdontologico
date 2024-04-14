@@ -118,4 +118,12 @@ public class Controladora {
         controladoraPersistencia.eliminarPaciente(id);
     }
 
+    public Paciente traerPaciente(int id) {
+        return controladoraPersistencia.traerPaciente(id);
+    }
+
+    public void editarPaciente(Paciente paciente) {
+        controladoraPersistencia.editarPaciente(paciente);
+    }
+
 }

@@ -6,23 +6,13 @@
     <%@ include file="/Components/bodyInicio.jsp"%>
 
     <!-- Page Heading -->
-    
+
 
     <form class="user">
-        <h4>Alta Odontólogos</h4>
+        <h4>Alta Secretario</h4>
         <hr>
         </br>
-    
-        <div class="form-group row">
-            <div class="col-sm-6 mb-3 mb-sm-0">
-                <input type="text" class="form-control" id="inputDni"
-                       placeholder="DNI" name="inputDni" required>
-            </div>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="inputEspecialidad"
-                       placeholder="Especialidad" name="inputEspecialidad" required>
-            </div>
-        </div>
+
         <div class="form-group row">
             <div class="col-sm-6 mb-3 mb-sm-0">
                 <input type="text" class="form-control" id="inputNombre"
@@ -35,6 +25,16 @@
         </div>
         <div class="form-group row">
             <div class="col-sm-6 mb-3 mb-sm-0">
+                <input type="text" class="form-control" id="inputDni"
+                       placeholder="DNI" name="inputDni" required>
+            </div>
+            <div class="col-sm-6">
+                <input type="date" class="form-control" id="inputDireccion"
+                       placeholder="Dirección" name="inputDireccion" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
                 <input type="text" class="form-control" id="inputTelefono"
                        placeholder="Telefono" name="inputTelefono" required>
             </div>
@@ -43,12 +43,6 @@
                        placeholder="Dirección" name="inputDireccion" required>
             </div>
         </div>
-        
-        <div class="form-group">
-            <input type="date" class="form-control" id="inputFechaNacimiento"
-                   placeholder="" name="inputFechanacimiento" required>
-        </div>
-        
         <div class="form-group row">
             <div class="col-sm-6 mb-3 mb-sm-0">
                 <label for="birthdaytime">Horario Inicio</label>
