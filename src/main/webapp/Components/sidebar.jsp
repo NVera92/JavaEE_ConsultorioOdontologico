@@ -72,12 +72,12 @@
 
     <!-- Nav Item - Odontologo Collapse Menu -->
     <% if (usuarioLog != null) {
-            if (usuarioLog.getRol().equalsIgnoreCase("administrador") || usuarioLog.getRol().equalsIgnoreCase("odontologo")) {%>
+            if (usuarioLog.getRol().equalsIgnoreCase("administrador")) {%>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
            aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-solid fa-hospital-user"></i>
-            <span>Odontólogo</span>
+            <span>Odontólogos</span>
         </a>
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -87,12 +87,42 @@
             </div>
         </div>
     </li>
+    <% } else if (usuarioLog.getRol().equalsIgnoreCase("odontologo")) { %>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+           aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-solid fa-hospital-user"></i>
+            <span>Odontólogo</span>
+        </a>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Acciones</h6>
+                <a class="collapse-item" href="#">Editar Perfil</a>
+            </div>
+        </div>
+    </li>
     <% }
         } %>
-          
+
     <!-- Nav Item - Secretario Collapse Menu -->
     <%  if (usuarioLog != null) {
-            if (usuarioLog.getRol().equalsIgnoreCase("administrador") || usuarioLog.getRol().equalsIgnoreCase("secretario")) {%>
+            if (usuarioLog.getRol().equalsIgnoreCase("administrador")) {%>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
+           aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fas fa-solid fa-user fa-user-edit"></i>
+            <span>Secretarios</span>
+        </a>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingUtilities"
+             data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Acciones</h6>
+                <a class="collapse-item" href="SvSecretario">Ver Secretarios</a>
+                <a class="collapse-item" href="altaSecretario.jsp">Alta Secretarios</a>
+            </div>
+        </div>
+    </li>
+    <% } else if (usuarioLog.getRol().equalsIgnoreCase("secretario")) { %>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
            aria-expanded="true" aria-controls="collapseUtilities">
@@ -103,12 +133,11 @@
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Acciones</h6>
-                <a class="collapse-item" href="">Ver Secretarios</a>
-                <a class="collapse-item" href="altaSecretario.jsp">Alta Secretarios</a>
+                <a class="collapse-item" href="SvSecretario">Editar Perfil</a>
             </div>
         </div>
     </li>
-    <% }
+    <%}
         }%>
     <!-- Nav Item - Secretario Collapse Menu -->
     <% if (usuarioLog != null) {
@@ -117,14 +146,14 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive"
            aria-expanded="true" aria-controls="collapseThree">
             <i class="fas fa-solid fa-user"></i>
-            <span>Usuarios</span>
+            <span>Administradores</span>
         </a>
         <div id="collapseFive" class="collapse" aria-labelledby="headingUtilities"
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Acciones</h6>
-                <a class="collapse-item" href="SvUsuario">Ver Usuarios</a>
-                <a class="collapse-item" href="altaUsuario.jsp">Alta Usuarios</a>
+                <a class="collapse-item" href="SvUsuario">Ver Administradores</a>
+                <a class="collapse-item" href="altaUsuario.jsp">Alta Administradores</a>
             </div>
         </div>
     </li>

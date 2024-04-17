@@ -126,4 +126,16 @@ public class Controladora {
         controladoraPersistencia.editarPaciente(paciente);
     }
 
+    public void crearSecretario(Secretario secretario) {
+        controladoraPersistencia.crearSecretario(secretario);
+    }
+
+    public List<Secretario> traerSecretarios() {
+        return controladoraPersistencia.traerSecretarios();
+    }
+
+    public Secretario traerSecretario(int id) {
+        return controladoraPersistencia.traerSecretario(id);
+    }
+
 }

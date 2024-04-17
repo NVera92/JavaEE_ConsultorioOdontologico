@@ -2,6 +2,7 @@ package com.todocode.persistencia;
 
 import com.todocode.logica.Paciente;
 import com.todocode.logica.Responsable;
+import com.todocode.logica.Secretario;
 import com.todocode.logica.Usuario;
 import com.todocode.persistencia.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
@@ -114,6 +115,22 @@ public class ControladoraPersistencia {
         } catch (Exception ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public void crearSecretario(Secretario secretario) {
+        secretarioJpaController.create(secretario);
+    }
+
+    public List<Secretario> traerSecretarios() {
+        List<Secretario> listaSecretarios = new ArrayList<>();
+        listaSecretarios = secretarioJpaController.findSecretarioEntities();
+        return listaSecretarios;
+    }
+
+    public Secretario traerSecretario(int id) {
+        Secretario secretario = new Secretario();
+        secretario = secretarioJpaController.findSecretario(id);
+        return secretario;
     }
 
     

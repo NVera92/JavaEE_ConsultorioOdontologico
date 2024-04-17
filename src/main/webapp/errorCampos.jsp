@@ -23,7 +23,7 @@
         </center>
 
         </br>
-        <a class="btn btn-primary btn-user btn-block" href="SvPaciente">
+        <a class="btn btn-primary btn-user btn-block" href="<%= errores[2]%>">
             Reintentar
         </a>
     </form>
