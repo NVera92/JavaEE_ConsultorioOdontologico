@@ -11,14 +11,14 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Ver Usuarios</h1>
-        <p class="mb-4">A continuacion se muestra la lista completas de usuarios.
+        <h1 class="h3 mb-2 text-gray-800">Ver Administradores</h1>
+        <p class="mb-4">A continuacion se listan todos los administradores del sistema.
         </p>
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Usuarios</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Administradores</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -26,7 +26,7 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Nombre de Usuario</th>
+                                <th>Nombre</th>
                                 <th>Rol</th>
                                 <th style="width: 210px">Acción</th>
                             </tr>
@@ -34,13 +34,13 @@
                         <tfoot>
                             <tr>
                                 <th>Id</th>
-                                <th>Nombre de Usuario</th>
+                                <th>Nombre</th>
                                 <th>Rol</th>
                                 <th style="width: 210px">Acción</th>
                             </tr>
                         </tfoot>
 
-                        <% List<Usuario> listaUsuarios = (List) request.getSession().getAttribute("listaUsuarios");%>
+                        <% List<Usuario> listaUsuarios = (List) request.getSession().getAttribute("listaAdministradores");%>
 
                         <tbody>
                             <% for (Usuario u : listaUsuarios) {%>
@@ -50,13 +50,13 @@
                                 <td><%= u.getRol()%></td>
 
                                 <td style="display: flex; width: 230px">
-                                    <form name="eliminar" action="SvEditarUsuario" method="get"> <!-- Esto es para mandar el codigo al servlet -->
+                                    <form name="eliminar" action="SvEditarAdministrador" method="get"> <!-- Esto es para mandar el codigo al servlet -->
                                         <button type="submit" class="btn btn-primary btn-user btn-block" style="margin-right: 5px">
                                             <i class="fas fa-pencil-alt"></i> Editar
                                         </button>
                                         <input type="hidden" name="id" value="<%=u.getId_usuario()%>"> <!-- Esto es para mandar el id al servelt -->
                                     </form>
-                                    <form name="eliminar" action="SvEliminarUsuario" method="post"> <!-- Esto es para mandar el codigo al servlet -->
+                                    <form name="eliminar" action="SvEliminarAdministrador" method="post"> <!-- Esto es para mandar el codigo al servlet -->
                                         <button type="submit" class="btn btn-primary btn-user btn-block" style="background-color:red; margin-right: 5px">
                                             <i class="fas fa-trash-alt"></i> Eliminar
                                         </button>

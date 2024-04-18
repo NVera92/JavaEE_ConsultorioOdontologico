@@ -152,8 +152,8 @@
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Acciones</h6>
-                <a class="collapse-item" href="SvUsuario">Ver Administradores</a>
-                <a class="collapse-item" href="altaUsuario.jsp">Alta Administradores</a>
+                <a class="collapse-item" href="SvAdministrador">Ver Administradores</a>
+                <a class="collapse-item" href="altaAdministrador.jsp">Alta Administradores</a>
             </div>
         </div>
     </li>

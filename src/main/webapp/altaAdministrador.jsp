@@ -7,12 +7,9 @@
 
     <!-- Page Heading -->
 
-    <% 
-        String message = "Resgistrar Usuario";
-    %>
 
-    <form class="user" action="SvUsuario" method="post">
-        <h4>Alta Usuario</h4>
+    <form class="user" action="SvAdministrador" method="post">
+        <h4>Alta Administrador</h4>
         <hr>
         </br>
 
@@ -23,14 +20,8 @@
                        placeholder="Usuario" name="inputUsuario" required>
             </div>
             <div class="col-sm-6">
-                <select class="form-control" name="inputRol" id="inputRol" required>
-                    <option value="" disabled selected>Selecione un Rol</option>
-                    <option value="odontologo">Odontólogo</option>
-                    <option value="secretario">Secretario</option>
-                    <option value="administrador">Administrador</option>
-                </select>
+                <input type="text" class="form-control" id="inputRol" name="inputRol" value="Administrador" disabled>
             </div>
-
         </div>
 
         <div class="form-group row">
@@ -47,7 +38,7 @@
 
         </br>
         <button class="btn btn-primary btn-user btn-block" type="submit">
-            Registrar Usuario
+            Registrar Administrador
         </button>
     </form>
 

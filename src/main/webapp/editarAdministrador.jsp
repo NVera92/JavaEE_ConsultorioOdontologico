@@ -9,7 +9,7 @@
     <!-- Page Heading -->
     <% Usuario u = (Usuario) request.getSession().getAttribute("usuario");%>
 
-    <form class="user" action="SvEditarUsuario" method="post">
+    <form class="user" action="SvEditarAdministrador" method="post">
         <h4>Editar Usuario</h4>
         <hr>
         </br>
@@ -23,14 +23,7 @@
                        value="<%= u.getNombre_usuario()%>" name="inputFalse" disabled>
             </div>
             <div class="col-sm-6">
-                <select class="form-control" name="inputRol" id="inputRol">
-                    <option value="" disabled>Rol Acutal:</option>
-                    <option value="<%= u.getRol()%>" selected><% out.print(u.getRol());%></option>
-                    <option value="" disabled>--------------------------------</option>
-                    <option value="odontologo">Odontólogo</option>
-                    <option value="secretario">Secretario</option>
-                    <option value="administrador">Administrador</option>
-                </select>
+                <input class="form-control" name="inputRol" id="inputRol" value="Administrador" disabled>
             </div>
 
         </div>

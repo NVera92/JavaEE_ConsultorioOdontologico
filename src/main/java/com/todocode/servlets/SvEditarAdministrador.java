@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "SvEditarUsuario", urlPatterns = {"/SvEditarUsuario"})
-public class SvEditarUsuario extends HttpServlet {
+@WebServlet(name = "SvEditarAdministrador", urlPatterns = {"/SvEditarAdministrador"})
+public class SvEditarAdministrador extends HttpServlet {
 
     Controladora controladora = new Controladora();
 
@@ -35,7 +35,7 @@ public class SvEditarUsuario extends HttpServlet {
         if (usuario != null) {
             HttpSession miSesion = request.getSession();
             miSesion.setAttribute("usuario", usuario);
-            response.sendRedirect("editarUsuario.jsp");
+            response.sendRedirect("editarAdministrador.jsp");
         }
 
     }
@@ -44,24 +44,33 @@ public class SvEditarUsuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String nombreUsuario = request.getParameter("inputUsuario");
-        String rol = request.getParameter("inputRol");
-        String password = request.getParameter("inputPassword");
-        String password1 = request.getParameter("inputPassword1");
+        try {
+            HttpSession session = request.getSession();
+            
+            String nombreUsuario = request.getParameter("inputUsuario");
+            String rol = request.getParameter("inputRol");
+            String password = request.getParameter("inputPassword");
+            String password1 = request.getParameter("inputPassword1");
 
-        Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
-        usuario.setNombre_usuario(nombreUsuario);
-        usuario.setRol(rol);
-        
-        if (password.equals(password1)) {
-            
-            usuario.setPassword_usuario(password);
-            controladora.editarUsuario(usuario);
-            response.sendRedirect("SvUsuario");
-            
-        } else {
-            response.sendRedirect("errorCamposEditarUsuario.jsp");
+            Usuario usuario = (Usuario) request.getSession().getAttribute("usuario");
+            usuario.setNombre_usuario(nombreUsuario);
+            usuario.setRol("administrador");
+
+            if (password.equals(password1)) {
+
+                usuario.setPassword_usuario(password);
+                controladora.editarUsuario(usuario);
+                response.sendRedirect("SvAdministrador");
+
+            } else {
+                String [] arrayError = {"alta de administrador","Las contraseñas NO coinciden, por favor verifique los datos","editarAdministrador.jsp"};
+                session.setAttribute("arrayError", arrayError);
+                response.sendRedirect("errorCamposEditarUsuario.jsp");
+            }
+        } catch (Error e) {
+            System.out.println(e.getMessage());
         }
+
     }
 
     @Override

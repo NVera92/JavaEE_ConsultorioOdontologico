@@ -23,7 +23,7 @@
         </center>
 
         </br>
-        <a class="btn btn-primary btn-user btn-block" href="altaUsuario.jsp">
+        <a class="btn btn-primary btn-user btn-block" href="altaAdministrador.jsp">
             Reintentar
         </a>
     </form>
