@@ -43,10 +43,6 @@
                        placeholder="Dirección" name="inputDireccion" required>
             </div>
         </div>
-        <div class="form-group">
-            <input type="text" class="form-control" id="inputSector"
-                   placeholder="Sector" name="inputSector" required>
-        </div>
        
         <!--
         <div class="form-group">
@@ -74,7 +70,7 @@
         </div>
         </br>
         <button class="btn btn-primary btn-user btn-block" type="submit">
-            Registrar Odontólogo
+            Registrar Secretario
         </button>
     </form>
 

@@ -57,11 +57,6 @@
                        name="inputDireccion" value="<%= s.getDireccion() %>" required>
             </div>
         </div>
-        <div class="form-group">
-            <input type="text" class="form-control" id="inputSector"
-                   name="inputSector" value="<%= s.getSector() %>" required>
-        </div>
-       
         <!--
         <div class="form-group">
             <input type="email" class="form-control form-control-user" id="exampleInputEmail"
@@ -70,7 +65,7 @@
         -->
         </br>
         <hr>
-        <h4>Creación Usuario</h4>
+        <h4>Editar Usuario</h4>
         </br>
         <div class="form-group">
             <input type="text" class="form-control" id="inputUsuario"
@@ -88,7 +83,7 @@
         </div>
         </br>
         <button class="btn btn-primary btn-user btn-block" type="submit">
-            Registrar Odontólogo
+            Editar Secretario
         </button>
     </form>
 

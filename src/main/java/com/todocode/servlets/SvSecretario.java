@@ -89,7 +89,7 @@ public class SvSecretario extends HttpServlet {
                     controladora.crearUsuario(usuario);
                     secretario.setUsuario_secretario(usuario);
                     controladora.crearSecretario(secretario);
-                    response.sendRedirect("verSecretario.jsp");
+                    response.sendRedirect("verSecretarios.jsp");
                 } else {
                     String errorMessages[] = {"alta de Secretario", "Contraseñas no coinciden, reintente.", "altaSecretario.jsp"};
                     HttpSession sesion = request.getSession();
