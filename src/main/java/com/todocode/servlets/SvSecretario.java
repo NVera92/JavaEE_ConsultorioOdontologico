@@ -4,7 +4,6 @@ import com.todocode.logica.Controladora;
 import com.todocode.logica.Secretario;
 import com.todocode.logica.Usuario;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
