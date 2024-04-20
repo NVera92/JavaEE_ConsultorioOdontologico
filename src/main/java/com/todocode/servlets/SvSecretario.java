@@ -89,11 +89,11 @@ public class SvSecretario extends HttpServlet {
                     controladora.crearUsuario(usuario);
                     secretario.setUsuario_secretario(usuario);
                     controladora.crearSecretario(secretario);
-                    response.sendRedirect("verSecretarios.jsp");
+                    doGet(request, response);
                 } else {
-                    String errorMessages[] = {"alta de Secretario", "Contraseñas no coinciden, reintente.", "altaSecretario.jsp"};
+                    String arrayError[] = {"alta de Secretario", "Contraseñas no coinciden, reintente.", "altaSecretario.jsp"};
                     HttpSession sesion = request.getSession();
-                    sesion.setAttribute("errorMessages", errorMessages);
+                    sesion.setAttribute("arrayError", arrayError);
                     response.sendRedirect("errorCampos.jsp");
                 }
                 
@@ -101,9 +101,9 @@ public class SvSecretario extends HttpServlet {
                 
 
             } else {
-                String errors[] = {"alta de Secretario", "El nombre de usuario ya se encuentra registrado.", "altaSecretario.jsp"};
+                String arrayError[] = {"alta de Secretario", "El nombre de usuario ya se encuentra registrado.", "altaSecretario.jsp"};
                 HttpSession sesion = request.getSession();
-                sesion.setAttribute("errors", errors);
+                sesion.setAttribute("arrayError", arrayError);
                 response.sendRedirect("errorCampos.jsp");
             }
 

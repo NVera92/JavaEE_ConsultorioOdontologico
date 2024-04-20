@@ -44,7 +44,7 @@
             </div>
             <div class="col-sm-6">
                 <input type="date" class="form-control" id="inputNacimiento"
-                       name="inputFechaNacimiento" value="<%= stringDate %>" required>
+                       name="inputNacimiento" value="<%= stringDate %>" required>
             </div>
         </div>
         <div class="form-group row">
@@ -57,12 +57,6 @@
                        name="inputDireccion" value="<%= s.getDireccion() %>" required>
             </div>
         </div>
-        <!--
-        <div class="form-group">
-            <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                   placeholder="Email Address">
-        </div>
-        -->
         </br>
         <hr>
         <h4>Editar Usuario</h4>

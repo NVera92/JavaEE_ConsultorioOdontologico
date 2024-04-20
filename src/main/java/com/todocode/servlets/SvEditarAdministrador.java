@@ -27,7 +27,7 @@ public class SvEditarAdministrador extends HttpServlet {
 
         int id = Integer.parseInt(request.getParameter("id"));
 
-        Usuario usuario = controladora.traerUsuarios(id);
+        Usuario usuario = controladora.traerUsuario(id);
 
         String pass = AES256.decrypt(usuario.getPassword_usuario(), usuario.getRol(), usuario.getNombre_usuario());
         usuario.setPassword_usuario(pass);

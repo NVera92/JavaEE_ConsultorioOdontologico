@@ -24,8 +24,11 @@ public class Controladora {
         controladoraPersistencia.eliminarUsuario(id);
     }
 
-    public Usuario traerUsuarios(int id) {
-        return controladoraPersistencia.traerUsuarios(id);
+    public Usuario traerUsuario(int id) {
+        Usuario usuario = controladoraPersistencia.traerUsuario(id);
+        String decryptPassword = AES256.decrypt(usuario.getPassword_usuario(), usuario.getRol(), usuario.getNombre_usuario());
+        usuario.setPassword_usuario(decryptPassword);
+        return usuario;
     }
 
     public void editarUsuario(Usuario usuario) {
@@ -50,6 +53,8 @@ public class Controladora {
         }
         return flag;
     }
+    
+    
 
     public Usuario traerUsuarioNombre(String nombreUsuario) {
         List<Usuario> listaUsuarios = controladoraPersistencia.traerUsuarios();
@@ -136,6 +141,14 @@ public class Controladora {
 
     public Secretario traerSecretario(int id) {
         return controladoraPersistencia.traerSecretario(id);
+    }
+
+    public void editarSecretario(Secretario secretario) {
+        controladoraPersistencia.editarSecretario(secretario);
+    }
+
+    public void eliminarSecretario(int id) {
+        
     }
 
 }

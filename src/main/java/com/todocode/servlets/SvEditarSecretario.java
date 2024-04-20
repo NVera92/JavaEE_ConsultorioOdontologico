@@ -32,6 +32,7 @@ public class SvEditarSecretario extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            System.out.println(request.getParameter("id"));
             int id = Integer.parseInt(request.getParameter("id"));
             Secretario secretario = controladora.traerSecretario(id);
 
@@ -49,6 +50,7 @@ public class SvEditarSecretario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         try {
 
             // Recoleccion de datos del secretario
@@ -83,27 +85,59 @@ public class SvEditarSecretario extends HttpServlet {
 
             secretario.setTelefono(telefono);
             secretario.setDireccion(direccion);
+            secretario.setSector("Secretaria");
 
             Usuario usuario = secretario.getUsuario_secretario();
 
-            if (!controladora.existeUsuario(nombreUsuario)) {
-                usuario.setNombre_usuario(nombreUsuario);
-                if (password.equals(password1)) {
-                    usuario.setPassword_usuario(password);
-                    controladora.editarUsuario(usuario);
-                    secretario.setUsuario_secretario(usuario);
+            boolean flagUsuario = false;
+            boolean flagRedirect = false;
+
+            /// Comprobacion de cambios en el nombre del Usuario
+            if (!usuario.getNombre_usuario().equals(nombreUsuario)) {
+                if (!controladora.existeUsuario(nombreUsuario)) {
+                    usuario.setNombre_usuario(nombreUsuario);
+                    flagUsuario = true;
                 } else {
-                    String[] arrayError = {"edición de secretario", "Las contraseñas NO coinciden!!", "editarSecretario.jsp"};
+                    flagRedirect = true;
+                    String idString = String.valueOf(secretario.getId());
+                    String[] arrayError = {"edición de secretario", "El nombre de usuario elegido NO se encuentra disponible, por favor escoja otro.", "SvEditarSecretario", idString};
                     HttpSession sesion = request.getSession();
                     sesion.setAttribute("arrayError", arrayError);
+                    response.sendRedirect("errorCampos.jsp");
                 }
+            }
+
+            /// Comprobando cambios en password del Ususario
+            if (password.equals(password1)) {
+                usuario.setPassword_usuario(password1);
+                flagUsuario = true;
             } else {
-                String[] arrayError = {"edición de secretario", "El nombre de usuario ya existe, elija otro.", "editarSecretario.jsp"};
+                flagRedirect = true;
+                String idString = String.valueOf(secretario.getId());
+                String[] arrayError = {"edición de secretario", "Las contraseñas NO coinciden!!", "SvEditarSecretario", idString};
                 HttpSession sesion = request.getSession();
                 sesion.setAttribute("arrayError", arrayError);
+                response.sendRedirect("errorCampos.jsp");
+            }
+
+            /// Comprueba si hubo cambios en Usuario
+            if (flagUsuario) {
+                /// Impactar los cambios en Usuario
+                controladora.editarUsuario(usuario);
+                /// Impactar Usuario en Secretario
+                secretario.setUsuario_secretario(usuario);
+            }
+
+            if (!flagRedirect) {
+                /// Impactar cambios en Secretario
+                controladora.editarSecretario(secretario);
+
+                /// Redireccion a lista de Secretarios
+                response.sendRedirect("SvSecretario");
             }
 
         } catch (Error e) {
+            System.out.println("ACA");
             System.out.println(e.getMessage());
         }
     }

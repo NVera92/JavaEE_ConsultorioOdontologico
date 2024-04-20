@@ -43,7 +43,7 @@ public class ControladoraPersistencia {
         }
     }
 
-    public Usuario traerUsuarios(int id) {
+    public Usuario traerUsuario(int id) {
         return usuarioJpaController.findUsuario(id);
     }
 
@@ -131,6 +131,14 @@ public class ControladoraPersistencia {
         Secretario secretario = new Secretario();
         secretario = secretarioJpaController.findSecretario(id);
         return secretario;
+    }
+
+    public void editarSecretario(Secretario secretario) {
+        try {
+            secretarioJpaController.edit(secretario);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     
