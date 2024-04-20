@@ -31,7 +31,16 @@ public class SvEliminarSecretario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+            
+        try{
         
+            int id = Integer.parseInt(request.getParameter("id"));
+            controladora.eliminarSecretario(id);
+            response.sendRedirect("SvSecretario");
+            
+        }catch(Error e){
+            System.out.println(e.getMessage());
+        }
     }
 
     

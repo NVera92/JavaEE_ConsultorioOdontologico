@@ -141,6 +141,14 @@ public class ControladoraPersistencia {
         }
     }
 
+    public void eliminarSecretario(int id) {
+        try {
+            secretarioJpaController.destroy(id);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     
 
     

@@ -148,7 +148,7 @@ public class Controladora {
     }
 
     public void eliminarSecretario(int id) {
-        
+        controladoraPersistencia.eliminarSecretario(id);
     }
 
 }
