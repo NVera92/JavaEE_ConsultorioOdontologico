@@ -171,4 +171,8 @@ public class Controladora {
         controladoraPersistencia.editarOdontologo(odontologo);
     }
 
+    public void eliminarOdontologo(int id) {
+        controladoraPersistencia.eliminarOdontologo(id);
+    }
+
 }
