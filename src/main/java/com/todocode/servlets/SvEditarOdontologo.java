@@ -2,6 +2,7 @@ package com.todocode.servlets;
 
 import com.todocode.logica.AES256;
 import com.todocode.logica.Controladora;
+import com.todocode.logica.Odontologo;
 import com.todocode.logica.Secretario;
 import com.todocode.logica.Usuario;
 import java.io.IOException;
@@ -17,76 +18,80 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "SvEditarSecretario", urlPatterns = {"/SvEditarSecretario"})
-public class SvEditarSecretario extends HttpServlet {
+
+@WebServlet(name = "SvEditarOdontologo", urlPatterns = {"/SvEditarOdontologo"})
+public class SvEditarOdontologo extends HttpServlet {
 
     Controladora controladora = new Controladora();
-
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        
     }
 
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
+        
+        try{
             int id = Integer.parseInt(request.getParameter("id"));
-            Secretario secretario = controladora.traerSecretario(id);
-
-            String pass = AES256.decrypt(secretario.getUsuario_secretario().getPassword_usuario(), secretario.getUsuario_secretario().getRol(), secretario.getUsuario_secretario().getNombre_usuario());
-            secretario.getUsuario_secretario().setPassword_usuario(pass);
-
-            HttpSession sesion = request.getSession();
-            sesion.setAttribute("secretario", secretario);
-            response.sendRedirect("editarSecretario.jsp");
-        } catch (Error e) {
+            Odontologo odontologo = controladora.traerOdontologo(id);
+            String pass = AES256.decrypt(odontologo.getUsuario_odontologo().getPassword_usuario(), odontologo.getUsuario_odontologo().getRol(), odontologo.getUsuario_odontologo().getNombre_usuario());
+            odontologo.getUsuario_odontologo().setPassword_usuario(pass);
+            HttpSession session = request.getSession();
+            session.setAttribute("odontologo", odontologo);
+            response.sendRedirect("editarOdontologo.jsp");
+            
+        }catch(Error e){
             System.out.println(e.getMessage());
         }
     }
 
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         try {
 
-            // Recoleccion de datos del secretario
+            // Recoleccion de datos del Odontologo
             String nombre = request.getParameter("inputNombre");
             String apellido = request.getParameter("inputApellido");
             String dni = request.getParameter("inputDni");
             String fecha = request.getParameter("inputNacimiento");
             String telefono = request.getParameter("inputTelefono");
             String direccion = request.getParameter("inputDireccion");
+            String especialidad = request.getParameter("inputEspecialidad");
 
-            // Recoleccion de datos del usuario
+            // Recoleccion de datos del Usuario
             String nombreUsuario = request.getParameter("inputUsuario");
             String password = request.getParameter("inputPassword");
             String password1 = request.getParameter("inputPassword1");
 
             // Traemos el secretario que esta en sesion
-            Secretario secretario = (Secretario) request.getSession().getAttribute("secretario");
+            Odontologo odontologo = (Odontologo) request.getSession().getAttribute("odontologo");
 
             // Reemplazamos los datos
-            secretario.setNombre(nombre);
-            secretario.setApellido(apellido);
-            secretario.setDni(dni);
+            odontologo.setNombre(nombre);
+            odontologo.setApellido(apellido);
+            odontologo.setDni(dni);
 
             // Conversion de String a Date
             Date dateAux;
             try {
                 dateAux = new SimpleDateFormat("yyyy-MM-dd").parse(fecha);
-                secretario.setFecha_nacimiento(dateAux);
+                odontologo.setFecha_nacimiento(dateAux);
             } catch (ParseException ex) {
                 Logger.getLogger(SvEditarSecretario.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            secretario.setTelefono(telefono);
-            secretario.setDireccion(direccion);
-            secretario.setSector("Secretaria");
+            odontologo.setTelefono(telefono);
+            odontologo.setDireccion(direccion);
+            odontologo.setEspecialidad(especialidad);
 
-            Usuario usuario = secretario.getUsuario_secretario();
+            Usuario usuario = odontologo.getUsuario_odontologo();
 
             boolean flagUsuario = false;
             boolean flagRedirect = false;
@@ -98,8 +103,8 @@ public class SvEditarSecretario extends HttpServlet {
                     flagUsuario = true;
                 } else {
                     flagRedirect = true;
-                    String idString = String.valueOf(secretario.getId());
-                    String[] arrayError = {"edición de secretario", "El nombre de usuario elegido NO se encuentra disponible, por favor escoja otro.", "SvEditarSecretario", idString};
+                    String idString = String.valueOf(odontologo.getId());
+                    String[] arrayError = {"edición de secretario", "El nombre de usuario elegido NO se encuentra disponible, por favor escoja otro.", "SvEditarOdontologo", idString};
                     HttpSession sesion = request.getSession();
                     sesion.setAttribute("arrayError", arrayError);
                     response.sendRedirect("errorCampos.jsp");
@@ -112,8 +117,8 @@ public class SvEditarSecretario extends HttpServlet {
                 flagUsuario = true;
             } else {
                 flagRedirect = true;
-                String idString = String.valueOf(secretario.getId());
-                String[] arrayError = {"edición de secretario", "Las contraseñas NO coinciden!!", "SvEditarSecretario", idString};
+                String idString = String.valueOf(odontologo.getId());
+                String[] arrayError = {"edición de secretario", "Las contraseñas NO coinciden!!", "SvEditarOdontologo", idString};
                 HttpSession sesion = request.getSession();
                 sesion.setAttribute("arrayError", arrayError);
                 response.sendRedirect("errorCampos.jsp");
@@ -124,23 +129,23 @@ public class SvEditarSecretario extends HttpServlet {
                 /// Impactar los cambios en Usuario
                 controladora.editarUsuario(usuario);
                 /// Impactar Usuario en Secretario
-                secretario.setUsuario_secretario(usuario);
+                odontologo.setUsuario_odontologo(usuario);
             }
 
             if (!flagRedirect) {
-                /// Impactar cambios en Secretario
-                controladora.editarSecretario(secretario);
+                /// Impactar cambios en Odontologo
+                controladora.editarOdontologo(odontologo);
 
-                /// Redireccion a lista de Secretarios
-                response.sendRedirect("SvSecretario");
+                /// Redireccion a lista de Odontologos
+                response.sendRedirect("SvOdontologo");
             }
 
         } catch (Error e) {
-            System.out.println("ACA");
             System.out.println(e.getMessage());
         }
     }
 
+    
     @Override
     public String getServletInfo() {
         return "Short description";

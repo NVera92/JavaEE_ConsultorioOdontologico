@@ -1,5 +1,7 @@
 package com.todocode.persistencia;
 
+import com.todocode.logica.Horario;
+import com.todocode.logica.Odontologo;
 import com.todocode.logica.Paciente;
 import com.todocode.logica.Responsable;
 import com.todocode.logica.Secretario;
@@ -20,6 +22,7 @@ public class ControladoraPersistencia {
     SecretarioJpaController secretarioJpaController = new SecretarioJpaController();
     TurnoJpaController turnoJpaController = new TurnoJpaController();
     UsuarioJpaController usuarioJpaController = new UsuarioJpaController();
+    HorarioJpaController horarioJpaController = new HorarioJpaController();
 
     public ControladoraPersistencia() {
     }
@@ -145,6 +148,33 @@ public class ControladoraPersistencia {
         try {
             secretarioJpaController.destroy(id);
         } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void crearHorario(Horario horario) {
+        horarioJpaController.create(horario);
+    }
+
+    public void crearOdontologo(Odontologo odontologo) {
+        odontologoJpaController.create(odontologo);
+    }
+
+    public List<Odontologo> traerOdontologos() {
+        List<Odontologo> listaOdontologos = new ArrayList<>();
+        listaOdontologos = odontologoJpaController.findOdontologoEntities();
+        return listaOdontologos;
+    }
+
+    public Odontologo traerOdontologo(int id) {
+        Odontologo odontologo = new Odontologo();
+        return odontologo = odontologoJpaController.findOdontologo(id);
+    }
+
+    public void editarOdontologo(Odontologo odontologo) {
+        try {
+            odontologoJpaController.edit(odontologo);
+        } catch (Exception ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

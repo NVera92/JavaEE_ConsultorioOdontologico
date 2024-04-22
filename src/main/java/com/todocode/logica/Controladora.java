@@ -151,4 +151,24 @@ public class Controladora {
         controladoraPersistencia.eliminarSecretario(id);
     }
 
+    public void crearHorario(Horario horario) {
+        controladoraPersistencia.crearHorario(horario);
+    }
+
+    public void crearOdontologo(Odontologo odontologo) {
+        controladoraPersistencia.crearOdontologo(odontologo);
+    }
+
+    public List<Odontologo> traerOdontologos() {
+        return controladoraPersistencia.traerOdontologos();
+    }
+
+    public Odontologo traerOdontologo(int id) {
+        return controladoraPersistencia.traerOdontologo(id);
+    }
+
+    public void editarOdontologo(Odontologo odontologo) {
+        controladoraPersistencia.editarOdontologo(odontologo);
+    }
+
 }

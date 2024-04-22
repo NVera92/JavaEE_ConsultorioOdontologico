@@ -9,6 +9,7 @@
     <class>com.todocode.logica.Secretario</class>
     <class>com.todocode.logica.Turno</class>
     <class>com.todocode.logica.Usuario</class>
+    <class>com.todocode.logica.Horario</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/clinica?serverTimezone=UTC"/>
