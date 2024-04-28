@@ -1,6 +1,8 @@
 package com.todocode.logica;
+
 import com.todocode.persistencia.ControladoraPersistencia;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Controladora {
@@ -53,8 +55,6 @@ public class Controladora {
         }
         return flag;
     }
-    
-    
 
     public Usuario traerUsuarioNombre(String nombreUsuario) {
         List<Usuario> listaUsuarios = controladoraPersistencia.traerUsuarios();
@@ -173,6 +173,34 @@ public class Controladora {
 
     public void eliminarOdontologo(int id) {
         controladoraPersistencia.eliminarOdontologo(id);
+    }
+
+    public void crearTurno(Turno turno) {
+        controladoraPersistencia.crearTurno(turno);
+    }
+
+    public List<Turno> traerTurnos() {
+        return controladoraPersistencia.traerTurnos();
+    }
+
+    public List<Turno> traerTurnosDia(Date dateAux) {
+        List<Turno> listaTurnos = new ArrayList<>();
+        List<Turno> listaTurnosDia = new ArrayList<>();
+
+        listaTurnos = controladoraPersistencia.traerTurnos();
+
+        if (!listaTurnos.isEmpty()) {
+            for (Turno t : listaTurnos) {
+                if (t.getFecha_turno().equals(dateAux)) {
+                    listaTurnosDia.add(t);
+                }
+            }
+        }
+        return listaTurnosDia;
+    }
+
+    public void eliminarTurno(int id) {
+        controladoraPersistencia.eliminarTurno(id);
     }
 
 }

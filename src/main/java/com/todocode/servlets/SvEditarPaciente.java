@@ -69,7 +69,9 @@ public class SvEditarPaciente extends HttpServlet {
             String direccion = request.getParameter("inputDireccion");
             String grupoSanguineo = request.getParameter("inputGrupoSanguineo");
             int idResponsable = Integer.valueOf(request.getParameter("inputResponsable"));
+            String os = request.getParameter("inputOs");
             
+             boolean obraSocial;
             
             // Obtencio del responsable
             Responsable responsable = new Responsable();
@@ -88,6 +90,17 @@ public class SvEditarPaciente extends HttpServlet {
             p.setDireccion(direccion);
             p.setTipo_sangre(grupoSanguineo);
             p.setResponsable(responsable);
+            
+            
+            
+            // Obtencion del boolean de OS
+            if(os == null){
+                obraSocial = false;
+            }else{
+                obraSocial = true;
+            }
+            
+            p.setPosee_OS(obraSocial);
             
             // Converison de String a Date y asignacion de fecha
             try {

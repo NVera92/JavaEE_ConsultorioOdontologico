@@ -5,6 +5,7 @@ import com.todocode.logica.Odontologo;
 import com.todocode.logica.Paciente;
 import com.todocode.logica.Responsable;
 import com.todocode.logica.Secretario;
+import com.todocode.logica.Turno;
 import com.todocode.logica.Usuario;
 import com.todocode.persistencia.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
@@ -182,6 +183,23 @@ public class ControladoraPersistencia {
     public void eliminarOdontologo(int id) {
         try {
             odontologoJpaController.destroy(id);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void crearTurno(Turno turno) {
+        turnoJpaController.create(turno);
+    }
+
+    public List<Turno> traerTurnos() {
+        List<Turno> listaTurnos = turnoJpaController.findTurnoEntities();
+        return  listaTurnos;
+    }
+
+    public void eliminarTurno(int id) {
+        try {
+            turnoJpaController.destroy(id);
         } catch (NonexistentEntityException ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }

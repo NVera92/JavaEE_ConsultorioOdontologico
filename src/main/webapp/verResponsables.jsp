@@ -48,7 +48,8 @@
                         <% List<Responsable> listaRes = (List) request.getSession().getAttribute("listaResponsables");%>
 
                         <tbody>
-                            <% for (Responsable res : listaRes) {%>
+                            <% for (Responsable res : listaRes) {
+                            if(!res.getNombre().equalsIgnoreCase("no") && !res.getApellido().equalsIgnoreCase("posee")) {%>
                             <tr>
                                 <td><%= res.getId() %></td>
                                 <td><%= res.getNombre() %></td>
@@ -72,7 +73,7 @@
                                 </td>
 
                             </tr>
-                            <%}%>
+                            <%}}%>
                         </tbody>
                     </table>
                 </div>

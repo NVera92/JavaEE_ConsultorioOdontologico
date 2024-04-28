@@ -46,31 +46,31 @@
                        placeholder="Dirección" name="inputDireccion" required>
             </div>
         </div>
-        
+
         <div class="form-group row">
             <div class="col-sm-6 mb-3 mb-sm-0">
                 <select class="form-control" name="inputGrupoSanguineo" id="inputGrupoSanguineo" required>
-                        <option value="" disabled selected>Selecione el grupo sanguineo</option>
-                        <option value="A positivo (A +)">A positivo (A +)</option>
-                        <option value="A negativo (A-)">A negativo (A-)</option>
-                        <option value="B positivo (B +)">B positivo (B +)</option>
-                        <option value="B negativo (B-)">B negativo (B-)</option>
-                        <option value="AB positivo (AB+)">AB positivo (AB+)</option>
-                        <option value="AB negativo (AB-)">AB negativo (AB-)</option>
-                        <option value="O positivo (O+)">O positivo (O+)</option>
-                        <option value="O negativo (O-)">O negativo (O-)</option>
-                    </select>
+                    <option value="" disabled selected>Selecione el grupo sanguineo</option>
+                    <option value="A positivo (A +)">A positivo (A +)</option>
+                    <option value="A negativo (A-)">A negativo (A-)</option>
+                    <option value="B positivo (B +)">B positivo (B +)</option>
+                    <option value="B negativo (B-)">B negativo (B-)</option>
+                    <option value="AB positivo (AB+)">AB positivo (AB+)</option>
+                    <option value="AB negativo (AB-)">AB negativo (AB-)</option>
+                    <option value="O positivo (O+)">O positivo (O+)</option>
+                    <option value="O negativo (O-)">O negativo (O-)</option>
+                </select>
             </div>
             <% List<Responsable> listaRes = (List) request.getSession().getAttribute("listaResponsables");%>
-            
+
             <div class="col-sm-6">
                 <select class="form-control" name="inputResponsable" id="inputResponsable" required>
-                        <option value="1" disabled selected>Selecione el responsable</option>
-                        <% for(Responsable r : listaRes){%>
-                        <option value="<%= r.getId()%>"><% out.print(r.getNombre()+" "+r.getApellido());%></option>
-                        <% } %>
-                        
-                    </select>
+                    <option value="1" disabled selected>Selecione el responsable</option>
+                    <% for (Responsable r : listaRes) {%>
+                    <option value="<%= r.getId()%>"><% out.print(r.getNombre() + " " + r.getApellido());%></option>
+                    <% }%>
+
+                </select>
             </div>
         </div>
 
