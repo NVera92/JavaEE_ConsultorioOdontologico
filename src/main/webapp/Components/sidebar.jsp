@@ -1,3 +1,5 @@
+<%@page import="com.todocode.logica.Odontologo"%>
+<%@page import="com.todocode.logica.Secretario"%>
 <%@page import="com.todocode.logica.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!-- Sidebar -->
@@ -5,7 +7,7 @@
 
     <%
         Usuario usuarioLog = (Usuario) request.getSession().getAttribute("usuarioLogueado");
-
+        
 
     %>
 
@@ -87,7 +89,9 @@
             </div>
         </div>
     </li>
-    <% } else if (usuarioLog.getRol().equalsIgnoreCase("odontologo")) { %>
+    <% } else if (usuarioLog.getRol().equalsIgnoreCase("odontologo")) {        
+        Odontologo o = (Odontologo) request.getSession().getAttribute("odontologo");
+    %>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
            aria-expanded="true" aria-controls="collapseTwo">
@@ -97,12 +101,18 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Acciones</h6>
-                <a class="collapse-item" href="#">Editar Perfil</a>
+                <form action="SvEditarOdontologo" method="get">
+                    <input hidden="true" value="<%= o.getId()%>" name="id" id="id">
+                    <center>
+                        <button class="btn btn-secondary" type="sumbit">Editar Perfil</button>
+                    </center>
+                </form>
             </div>
         </div>
     </li>
     <% }
-        } %>
+        }
+    %>
 
     <!-- Nav Item - Secretario Collapse Menu -->
     <%  if (usuarioLog != null) {
@@ -122,7 +132,9 @@
             </div>
         </div>
     </li>
-    <% } else if (usuarioLog.getRol().equalsIgnoreCase("secretario")) { %>
+    <% } else if (usuarioLog.getRol().equalsIgnoreCase("secretario")) {
+        Secretario s = (Secretario) request.getSession().getAttribute("secretario");
+    %>
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
            aria-expanded="true" aria-controls="collapseUtilities">
@@ -133,11 +145,18 @@
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Acciones</h6>
-                <a class="collapse-item" href="SvSecretario">Editar Perfil</a>
+                <form action="SvEditarSecretario" method="get">
+                    <input hidden="true" value="<%= s.getId()%>" name="id" id="id">
+                    <center>
+                        <button class="btn btn-secondary" type="sumbit">Editar Perfil</button>
+                    </center>
+                </form>
             </div>
         </div>
     </li>
     <%}
+        } else {
+            response.sendRedirect("404.jsp");
         }%>
     <!-- Nav Item - Secretario Collapse Menu -->
     <% if (usuarioLog != null) {

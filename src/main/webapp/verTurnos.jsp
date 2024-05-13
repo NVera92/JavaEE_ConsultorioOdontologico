@@ -62,7 +62,7 @@
                             <% for (Turno res : listaT) {
                                     if (res.getFecha_turno() != null) {
                                         Date dateAux = res.getFecha_turno();
-                                        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                                        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
                                         String strDate = dateFormat.format(dateAux); %>
                                         
                                         
@@ -77,7 +77,7 @@
                                 
 
                                 <td style="display: flex; width: 230px">
-                                    <form name="eliminar" action="SvEditarOdontologo" method="get"> <!-- Esto es para mandar el codigo al servlet -->
+                                    <form name="eliminar" action="SvEditarTurno" method="get"> <!-- Esto es para mandar el codigo al servlet -->
                                         <button type="submit" class="btn btn-primary btn-user btn-block" style="margin-right: 5px">
                                             <i class="fas fa-pencil-alt"></i> Editar
                                         </button>

@@ -1,3 +1,4 @@
+<%@page import="com.todocode.logica.Turno"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
@@ -14,12 +15,14 @@
 
     <!-- Page Heading -->
 
-    <% List<Paciente> listaP = (List) request.getSession().getAttribute("listaPacientes");
-        List<Odontologo> listaO = (List) request.getSession().getAttribute("listaOdontologos");
+    <% 
+        Turno t = (Turno) request.getSession().getAttribute("turno");
+        
+        
     %>
 
 
-    <form class="user" action="SvTurno" method="post">
+    <form class="user" action="SvAltaTurnoDisponible" method="post">
         <h4>Alta Turno</h4>
         <hr>
         </br>
@@ -35,35 +38,44 @@
             }
 
 
+            String dateTurno = "";
+            if(t.getFecha_turno() != null){
+            SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
+            dateTurno = formater.format(t.getFecha_turno());
+            }
         %>
-        <div class="form-group">
-            <input type="date" class="form-control" id="inputFecha"
-                   name="inputFecha" min="<%= stringDate%>" required>
-        </div>
+        
 
         <div class="form-group row">
             <div class="col-sm-6 mb-3 mb-sm-0">
+                <input type="date" class="form-control" id="inputFecha"
+                       name="inputFecha" value="<%= dateTurno %>" min="<%= stringDate%>" required>
+            </div>
+
+
+            <div class="col-sm-6">
+                <input class="form-control" type="time" min="<%= t.getOdontologo().getHorario_inicio()%>"
+                       max="<%= t.getOdontologo().getHorario_fin() %>" id="inputHora" name="inputHora">
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
                 <select class="form-control" name="inputPaciente" id="inputPaciente" required>
-                    <option value="" disabled selected>Selecione el Paciente</option>
-                    <% for (Paciente p : listaP) {%>
-                    <option value="<%= p.getId()%>"><% out.print(p.getNombre() + " " + p.getApellido());%></option>
-                    <% } %>
+                    <option value="<%= t.getPaciente().getId_paciente() %>" selected><% out.print(t.getPaciente().getNombre() + " " + t.getPaciente().getApellido());%></option>
                 </select>
             </div>
 
 
             <div class="col-sm-6">
                 <select class="form-control" name="inputOdontologo" id="inputOdontologo" required>
-                    <option value="" disabled selected>Selecione el Odontologo</option>
-                    <% for (Odontologo o : listaO) {%>
-                    <option value="<%= o.getId()%>"><% out.print(o.getNombre() + " " + o.getApellido());%></option>
-                    <% }%>
+                    <option value="<%= t.getOdontologo().getId() %>" selected><% out.print(t.getOdontologo().getNombre() + " " + t.getOdontologo().getApellido());%></option>  
                 </select>
             </div>
         </div>
         <div class="form-group">
             <input type="text" class="form-control" id="inputAfeccion"
-                   name="inputAfeccion" required>
+                   name="inputAfeccion" value="<%= t.getAfeccion() %>" required>
         </div>    
         </br>
         <hr>

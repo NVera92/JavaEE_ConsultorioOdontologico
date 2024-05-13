@@ -205,6 +205,40 @@ public class ControladoraPersistencia {
         }
     }
 
+    public Turno traerTurno(int id) {
+        return turnoJpaController.findTurno(id);
+    }
+
+    public void editarTeditarTurno(Turno t) {
+        try {
+            turnoJpaController.edit(t);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public int contarPacientes() {
+        int n = pacienteJpaController.getPacienteCount();
+        return n;
+    }
+
+    public int contarTurnos() {
+        int n = turnoJpaController.getTurnoCount();
+        return n;
+    }
+
+    public int contarOdontologos() {
+        int n = odontologoJpaController.getOdontologoCount();
+        return n;
+    }
+
+    public int contarSecretarios() {
+        int n = secretarioJpaController.getSecretarioCount();
+        return n;
+    }
+
+    
+
     
 
     

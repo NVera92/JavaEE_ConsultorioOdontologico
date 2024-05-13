@@ -12,6 +12,12 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
+        <% Usuario u = (Usuario) request.getSession().getAttribute("usuarioLogueado");
+
+            if (u.getRol().equalsIgnoreCase("administrador")) {
+        %>
+
+
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">Ver Secretarios</h1>
         <p class="mb-4">A continuacion se muestra la lista completa de secretarios.
@@ -51,11 +57,11 @@
                         <tbody>
                             <% for (Secretario res : listaSec) {%>
                             <tr>
-                                <td><%= res.getId() %></td>
-                                <td><%= res.getNombre() %></td>
-                                <td><%= res.getApellido() %></td>
-                                <td><%= res.getTelefono() %></td>
-                                <td><%= res.getDireccion() %></td>
+                                <td><%= res.getId()%></td>
+                                <td><%= res.getNombre()%></td>
+                                <td><%= res.getApellido()%></td>
+                                <td><%= res.getTelefono()%></td>
+                                <td><%= res.getDireccion()%></td>
 
                                 <td style="display: flex; width: 230px">
                                     <form name="eliminar" action="SvEditarSecretario" method="get"> <!-- Esto es para mandar el codigo al servlet -->
@@ -81,10 +87,27 @@
         </div>
 
     </div>
-    <!-- /.container-fluid -->
+    <% } else { %>
+    <div>
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Secretario</h1>
+        
 
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Editar Secretario</h6>
+            </div>
+            <div class="card-body">
+                <center>
+                    <p>Los datos del secretario <% out.print(u.getNombre_usuario());%> fueron actualizados correctamente.</p>
+                <a class="btn btn-primary" href="index.jsp">Aceptar</a>
+                </center>
+            </div>
+        </div>
 
-    <!-- End of Main Content -->
+    </div>
+    <% }%>
 
 
     <%@ include file="/Components/bodyFinal.jsp"%>

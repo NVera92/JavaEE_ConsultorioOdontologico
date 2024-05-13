@@ -148,7 +148,13 @@ public class Controladora {
     }
 
     public void eliminarSecretario(int id) {
-        controladoraPersistencia.eliminarSecretario(id);
+        try{
+            Secretario s = traerSecretario(id);
+            controladoraPersistencia.eliminarUsuario(s.getUsuario_secretario().getId_usuario());
+            controladoraPersistencia.eliminarSecretario(id);
+        }catch(Error e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public void crearHorario(Horario horario) {
@@ -172,7 +178,13 @@ public class Controladora {
     }
 
     public void eliminarOdontologo(int id) {
-        controladoraPersistencia.eliminarOdontologo(id);
+        try{
+            Odontologo o = traerOdontologo(id);
+            controladoraPersistencia.eliminarUsuario(o.getUsuario_odontologo().getId_usuario());
+            controladoraPersistencia.eliminarOdontologo(id);
+        }catch(Error e){
+            System.out.println(e.getMessage());
+        }
     }
 
     public void crearTurno(Turno turno) {
@@ -202,5 +214,66 @@ public class Controladora {
     public void eliminarTurno(int id) {
         controladoraPersistencia.eliminarTurno(id);
     }
+
+    public Turno traerTurno(int id) {
+        return controladoraPersistencia.traerTurno(id);
+    }
+
+    public void editarTurno(Turno t) {
+        controladoraPersistencia.editarTeditarTurno(t);
+    }
+
+    public int contarPacientes() {
+        return controladoraPersistencia.contarPacientes();
+    }
+
+    public int contarTurnos() {
+        return controladoraPersistencia.contarTurnos();
+    }
+
+    public int contarOdontologos() {
+        return controladoraPersistencia.contarOdontologos();
+    }
+
+    public int contarSecretarios() {
+        return controladoraPersistencia.contarSecretarios();
+    }
+
+    public Odontologo traerOdontologoUsuario(int id_usuario) {
+        Odontologo o = new Odontologo();
+        try{
+            List<Odontologo> list = controladoraPersistencia.traerOdontologos();
+            if(list != null){
+                for(Odontologo od : list){
+                    if(od.getUsuario_odontologo().getId_usuario() == id_usuario){
+                        o = od;
+                    }
+                }
+            }
+        }catch(Error e){
+            System.out.println(e.getMessage());
+        }
+        return o;
+    }
+
+    public Secretario traerSecretarioUsuario(int id_usuario) {
+        Secretario s = new Secretario();
+        try{
+            List<Secretario> list = controladoraPersistencia.traerSecretarios();
+            if(list != null){
+                for(Secretario se : list){
+                    if(se.getUsuario_secretario().getId_usuario() == id_usuario){
+                        s = se;
+                    }
+                }
+            }
+        }catch(Error e){
+            System.out.println(e.getMessage());
+        }
+        
+        return s;
+    }
+
+    
 
 }

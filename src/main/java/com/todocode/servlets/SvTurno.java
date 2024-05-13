@@ -88,6 +88,7 @@ public class SvTurno extends HttpServlet {
                 /// Verificar que sea de lunes a viernes
                 if (dayOfWeek == 1 || dayOfWeek == 7) {
                     System.out.println("Fin de semana");
+                    response.sendRedirect("index.jsp");
                 } else {
                     System.out.println("Dia Laboral");
                     if (!odontologo.getLista_turnos().isEmpty()) {
@@ -106,19 +107,29 @@ public class SvTurno extends HttpServlet {
                             response.sendRedirect("altaTurnoDisponibilidad.jsp");
 
                         } else {
+                            HttpSession sessionListaTurno = request.getSession();
+                            sessionListaTurno.setAttribute("listaTurnos", listaTurnos);
+                            HttpSession sessionOdontologo = request.getSession();
+                            sessionOdontologo.setAttribute("odontologo", odontologo);
+                            HttpSession sessionPaciente = request.getSession();
+                            sessionPaciente.setAttribute("paciente", paciente);
                             turno.setFecha_turno(dateAux);
-                            odontologo.getLista_turnos().add(turno);
-                            paciente.getLista_turnos().add(turno);
-                            controladora.crearTurno(turno);
-                            response.sendRedirect("SvVerTurnos");
+                            HttpSession sessionTurno = request.getSession();
+                            sessionTurno.setAttribute("turno", turno);
+                            response.sendRedirect("altaTurnoDisponibilidad.jsp");
+                            
                         }
 
                     } else {
-                        turno.setFecha_turno(dateAux);
-                        odontologo.getLista_turnos().add(turno);
-                        paciente.getLista_turnos().add(turno);
-                        controladora.crearTurno(turno);
-                        response.sendRedirect("SvVerTurnos");
+                       
+                            HttpSession sessionOdontologo = request.getSession();
+                            sessionOdontologo.setAttribute("odontologo", odontologo);
+                            HttpSession sessionPaciente = request.getSession();
+                            sessionPaciente.setAttribute("paciente", paciente);
+                            turno.setFecha_turno(dateAux);
+                            HttpSession sessionTurno = request.getSession();
+                            sessionTurno.setAttribute("turno", turno);
+                            response.sendRedirect("altaTurnoHorario.jsp"); 
                     }
 
                 }
@@ -127,11 +138,8 @@ public class SvTurno extends HttpServlet {
                 Logger.getLogger(SvTurno.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            /// Busqueda y asignacion de Paciente
-            //Paciente paciente = controladora.traerPaciente(idPaciente);
-            /// Busqueda y asignacion de Odontologo
-            //Odontologo odontologo = controladora.traerOdontologo(idOdontologo);
         } catch (Error e) {
+            response.sendRedirect("404.jsp");
             System.out.println(e.getMessage());
         }
 

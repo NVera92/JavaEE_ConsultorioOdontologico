@@ -67,6 +67,8 @@ public class SvEditarSecretario extends HttpServlet {
 
             // Traemos el secretario que esta en sesion
             Secretario secretario = (Secretario) request.getSession().getAttribute("secretario");
+            
+            
 
             // Reemplazamos los datos
             secretario.setNombre(nombre);
@@ -136,7 +138,6 @@ public class SvEditarSecretario extends HttpServlet {
             }
 
         } catch (Error e) {
-            System.out.println("ACA");
             System.out.println(e.getMessage());
         }
     }
