@@ -49,7 +49,7 @@
                                         <center style="color: red">
                                             <h4>Datos Incorectos!!</h4>
                                         </center>
-                                        </br>
+                                        
                                         </br>
                                         <a href="login.jsp" class="btn btn-primary btn-user btn-block">
                                             Reintentar

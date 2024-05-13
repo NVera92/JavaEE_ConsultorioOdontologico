@@ -31,12 +31,16 @@ public class Turno implements Serializable {
     public Turno() {
     }
 
-    public Turno(int id_turno, Date fecha_turno, String hora_turno, String afeccion) {
+    public Turno(int id_turno, Date fecha_turno, String hora_turno, String afeccion, Odontologo odontologo, Paciente paciente) {
         this.id_turno = id_turno;
         this.fecha_turno = fecha_turno;
         this.hora_turno = hora_turno;
         this.afeccion = afeccion;
+        this.odontologo = odontologo;
+        this.paciente = paciente;
     }
+
+    
 
     public int getId_turno() {
         return id_turno;
@@ -69,6 +73,24 @@ public class Turno implements Serializable {
     public void setAfeccion(String afeccion) {
         this.afeccion = afeccion;
     }
+
+    public Odontologo getOdontologo() {
+        return odontologo;
+    }
+
+    public void setOdontologo(Odontologo odontologo) {
+        this.odontologo = odontologo;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+    
+    
 
     @Override
     public String toString() {
