@@ -23,6 +23,8 @@
 </head>
 
 <body class="bg-gradient-primary">
+    
+    
 
     <div class="container">
 
@@ -43,14 +45,16 @@
                                     </div>
                                     <form class="user" action="SvLogin" method="post">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user"
+                                            <input type="text" class="form-control"
                                                    id="inputUsuario" name="inputUsuario" aria-describedby="emailHelp"
                                                 placeholder="Usuario">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
+                                            <input type="password" class="form-control"
                                                    id="inputPassword" name="inputPassword" placeholder="Contraseña">
+                                           
                                         </div>
+                                        
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Ingresar
                                         </button>
